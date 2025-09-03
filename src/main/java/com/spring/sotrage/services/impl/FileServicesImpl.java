@@ -36,9 +36,15 @@ public class FileServicesImpl implements FileServices {
         if (file.isEmpty()) {
             throw new IllegalArgumentException("Empty file");
         }
+        
+        String fileExtention = "";
 
-        String originalFileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        String fileKey = UUID.randomUUID() + "-" + originalFileName;
+        String fileName = file.getOriginalFilename();
+        if (fileName != null && fileName.contains(".")) {
+            fileExtention = fileName.substring(fileName.lastIndexOf(".") + 1);
+        }
+
+        String fileKey = UUID.randomUUID() + "." + fileExtention;
 
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)

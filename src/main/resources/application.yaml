@@ -3,16 +3,16 @@ spring:
     name: sotrage
   servlet:
     multipart:
-      max-file-size: 25MB
-      max-request-size: 30MB
+      max-file-size: ${max-file-size:25MB}
+      max-request-size: ${max-request-size:30MB}
 
 aws:
   s3:
-    access-key: 5869ffcec366ddfb878c315a70d23c7d
-    secret-key: 79c9acb9c60779c5c837c5c7feee3de66d784d93a8e8ac0aa26cb611c175feaa
-    region: auto
-    endpoint: https://60a86027e546ccf5db7ca247c1eedca7.r2.cloudflarestorage.com
-    bucket: menglot-storage
+    access-key: ${r2-access-key:5869ffcec366ddfb878c315a70d23c7d}
+    secret-key: ${r2-secret-key:79c9acb9c60779c5c837c5c7feee3de66d784d93a8e8ac0aa26cb611c175feaa}
+    region: ${r2-region:auto}
+    endpoint: ${r2-endpoint:https://60a86027e546ccf5db7ca247c1eedca7.r2.cloudflarestorage.com}
+    bucket: ${r2-bucket:menglot-storage}
 
 cdn-storage:
-  url: https://pub-c4b9f915458345ff9eeb8f3b24b49748.r2.dev/
+  url: ${cdn-storage-url:https://pub-c4b9f915458345ff9eeb8f3b24b49748.r2.dev/}
